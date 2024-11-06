@@ -1,13 +1,12 @@
 <script setup>
 import NavBar from './components/AppNavbar.vue';
-import AppFooter from './components/AppFooter.vue';
 import { RouterView } from 'vue-router';
 </script>
 
 <template>
   <NavBar msg="Counter!" />
   <RouterView />
-  <AppFooter />
+
 
 </template>
 
@@ -15,6 +14,6 @@ import { RouterView } from 'vue-router';
 main {
   display: grid;
   place-items: center;
-  min-height: 80vh;
+  min-height: 90vh;
 }
 </style>

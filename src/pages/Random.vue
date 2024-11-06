@@ -53,71 +53,79 @@ function fetchData() {
 </script>
 <template>
     <main>
-        <div v-if="loading" class="my-spinner spinner-grow text-danger position-fixed" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-        <div v-if="pokemon">
-            <div>
-                <h1 class="text-center mb-3 text-capitalize">{{ pokemon.name }}</h1>
+        <section>
+            <div v-if="loading" class="my-spinner spinner-grow text-danger position-fixed" role="status">
+                <span class="visually-hidden">Loading...</span>
             </div>
-            <div class="container-fluid">
-                <div class="row justify-content-center">
-                    <div class="pokeball">
-                        <img v-if="pokemon.sprites" :src="pokemon.sprites.front_shiny" alt="pokemon image">
-                    </div>
-                    <div class="card m-3 bg-danger text-white">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="card-body">
-                                    <h5 class="card-title">Abilities</h5>
-                                    <ul class="list-group">
-                                        <li class="list-group-item" v-for="ability in pokemon.abilities">{{
-                                            ability.ability.name }}
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- stats -->
-                                <div class="card-body">
-                                    <h5 class="card-title">Stats</h5>
-                                    <ul class="list-group">
-                                        <li class="list-group-item" v-for="stat in pokemon.stats" :key="stat.stat.name">
-                                            {{
-                                                stat.stat.name }}: {{
-                                                stat.base_stat }} </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card-body">
-                                    <div class="text-center">
-                                        <h5 class="card-title">Legacy cry</h5>
-                                        <audio :autoplay="legacyCry" controls :src="pokemon.cries.legacy"></audio>
-                                    </div>
-                                    <div class="mt-3 text-center">
-                                        <h5 class="card-title">Latest cry</h5>
-                                        <audio :autoplay="!legacyCry" controls :src="pokemon.cries.latest"></audio>
-                                    </div>
-                                </div>
-                                <div class="card-body bg">
-                                    <h5>Descrizione</h5>
-                                    <p class="text-black bg-white rounded-1 p-3">{{ pokedescription }}</p>
-                                </div>
-                            </div>
+            <div v-if="pokemon">
+                <div>
+                    <h1 class="text-center mb-3 text-capitalize">{{ pokemon.name }}</h1>
+                </div>
+                <div class="container-fluid">
+                    <div class="row justify-content-center">
+                        <div class="pokeball">
+                            <img v-if="pokemon.sprites" :src="pokemon.sprites.front_default" alt="pokemon image">
                         </div>
+                        <div class="card m-3 bg-danger text-white">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Abilities</h5>
+                                        <ul class="list-group">
+                                            <li class="list-group-item" v-for="ability in pokemon.abilities">{{
+                                                ability.ability.name }}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- stats -->
+                                    <div class="card-body">
+                                        <h5 class="card-title">Stats</h5>
+                                        <ul class="list-group">
+                                            <li class="list-group-item" v-for="stat in pokemon.stats"
+                                                :key="stat.stat.name">
+                                                {{
+                                                    stat.stat.name }}: {{
+                                                    stat.base_stat }} </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <h5 class="card-title">Legacy cry</h5>
+                                            <audio :autoplay="legacyCry" controls :src="pokemon.cries.legacy"></audio>
+                                        </div>
+                                        <div class="mt-3 text-center">
+                                            <h5 class="card-title">Latest cry</h5>
+                                            <audio :autoplay="!legacyCry" controls :src="pokemon.cries.latest"></audio>
+                                        </div>
+                                    </div>
+                                    <div class="card-body bg">
+                                        <h5>Descrizione</h5>
+                                        <p class="text-black bg-white rounded-1 p-3">{{ pokedescription }}</p>
+                                    </div>
+                                </div>
+                            </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div v-else>
-            <h1 class="text-center">Enter a Pokémon number or name!</h1>
-        </div>
-        <form @submit.prevent="fetchData">
-            <input v-model="msg" class="form-control" type="text" required>
-        </form>
+            <div v-else>
+                <h1 class="text-center">Enter a Pokémon number or name!</h1>
+            </div>
+            <form @submit.prevent="fetchData">
+                <input v-model="msg" class="form-control" type="text" required>
+            </form>
+        </section>
     </main>
 </template>
 <style scoped>
+main {
+
+    background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(21, 121, 9, 1) 35%, rgba(245, 255, 0, 1) 100%);
+}
+
 h1 {
     color: red;
 }

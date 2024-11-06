@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap'
 import './style.css'
 
+
 createApp(App)
     .use(router)
     .mount('#app')
